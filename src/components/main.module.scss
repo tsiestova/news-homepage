@@ -1,0 +1,18 @@
+@use "../styles/abstracts/functions" as media;
+
+.section__wrap {
+  @include media.desktop {
+    max-width: 1188px;
+    margin: auto;
+    display: flex;
+    padding: 0 39px;
+    gap: 30px;
+  }
+}
+
+.layout {
+  @include media.desktop {
+    max-width: 1188px;
+    margin: auto;
+  }
+}

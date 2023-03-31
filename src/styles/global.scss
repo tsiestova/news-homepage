@@ -1,0 +1,6 @@
+@use "./abstracts";
+@use "../styles/abstracts/functions" as media;
+
+body {
+  font-family: abstracts.$font;
+}

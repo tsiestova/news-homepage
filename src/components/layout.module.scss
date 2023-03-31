@@ -1,0 +1,9 @@
+@use "../styles/abstracts/functions" as media;
+
+.layout {
+  padding: 0 16px;
+
+  @include media.tablet {
+    padding: 0 39px;
+  }
+}

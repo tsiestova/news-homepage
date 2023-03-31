@@ -1,0 +1,36 @@
+.news__item {
+  border-bottom: 1px solid #5e607a;
+  padding-bottom: 28px;
+  padding-top: 34px;
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  a {
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      .item__heading {
+        color: #e9aa52;
+      }
+    }
+  }
+}
+
+.item__heading {
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+  color: #fffdfa;
+  margin-bottom: 8px;
+}
+
+.item__content {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 26px;
+  color: #c5c6ce;
+}
