@@ -2,14 +2,15 @@
 
 .news__container__wrap {
   margin-bottom: 64px;
+  padding: 0 16px;
 
   .layout {
     padding: 0;
+    background-color: #00001a;
   }
 }
 
 .news__container {
-  background-color: #00001a;
   padding: 24px 20px;
 
   @include media.desktop {
@@ -27,7 +28,4 @@
     font-size: 40px;
     line-height: 40px;
   }
-}
-
-.news__list {
 }
