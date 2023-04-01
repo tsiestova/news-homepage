@@ -95,4 +95,10 @@
     text-decoration: none;
     color: #5e607a;
   }
+
+  &:hover {
+    @include media.desktop {
+      color: #f15d51;
+    }
+  }
 }

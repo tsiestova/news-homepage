@@ -4,12 +4,18 @@ import TopBox from "./components/TopBox";
 import NewsContainer from "./components/NewsContainer";
 import ArticleContainer from "./components/ArticleContainer";
 import mainStyles from "./components/main.module.scss";
-import { useState, createContext, useReducer, useRef } from "react";
+import { useState, createContext, useReducer, useRef, useEffect } from "react";
 import ModalComponent from "./components/ModalComponent";
 export const ModalContext = createContext(null);
 
 function App() {
   const [isOpenModal, setIsOpenModal] = useState(false);
+
+  useEffect(() => {
+    isOpenModal
+      ? (document.body.style.overflowY = "hidden")
+      : (document.body.style.overflowY = "auto");
+  }, [isOpenModal]);
 
   const dataContext = {
     isOpenModal,
