@@ -27,11 +27,6 @@ function App() {
     <div className="App">
       <ModalContext.Provider value={dataContext}>
         <div
-          // className={
-          //   isOpenModal
-          //     ? `${mainStyles.page__wrap} ${mainStyles.dark__mode}`
-          //     : `${mainStyles.page__wrap}`
-          // }
           className={mainStyles.page__wrap}
           ref={appRef}
           onMouseDown={(e) => handleMouseDown(e)}

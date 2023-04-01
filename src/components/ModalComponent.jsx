@@ -7,7 +7,6 @@ const ModalComponent = () => {
   const { isOpenModal, setIsOpenModal } = useContext(ModalContext);
 
   const modalRef = useRef();
-  console.log(modalRef.current);
 
   if (!isOpenModal) return null;
 

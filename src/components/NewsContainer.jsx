@@ -2,7 +2,6 @@ import React from "react";
 import newsContainerStyles from "./news-container.module.scss";
 import layoutStyle from "./layout.module.scss";
 import NewsItem from "./NewsItem";
-import newsItemStyle from "./news-item.module.scss";
 
 const NewsContainer = () => {
   return (

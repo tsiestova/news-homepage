@@ -3,6 +3,7 @@ import headerStyle from "./header.module.scss";
 import layoutStyle from "./layout.module.scss";
 import mainStyle from "./main.module.scss";
 import { ModalContext } from "../App";
+import logo from "../assets/logo.svg";
 
 const Header = () => {
   const { isOpenModal, setIsOpenModal } = useContext(ModalContext);
@@ -13,7 +14,7 @@ const Header = () => {
         className={`${layoutStyle.layout} ${headerStyle.layout} ${mainStyle.layout}`}
       >
         <figure className={headerStyle.logo__wrap}>
-          <img src="./assets/images/logo.svg" alt="" />
+          <img src={logo} alt="" />
         </figure>
         <button
           type="button"
@@ -23,19 +24,19 @@ const Header = () => {
 
         <div className={headerStyle.nav__menu__wrap}>
           <nav className={headerStyle.nav__menu}>
-            <a href="" className={headerStyle.nav__menu__item}>
+            <a href="#" className={headerStyle.nav__menu__item}>
               Home
             </a>
-            <a href="" className={headerStyle.nav__menu__item}>
+            <a href="#" className={headerStyle.nav__menu__item}>
               New
             </a>
-            <a href="" className={headerStyle.nav__menu__item}>
+            <a href="#" className={headerStyle.nav__menu__item}>
               Popular
             </a>
-            <a href="" className={headerStyle.nav__menu__item}>
+            <a href="#" className={headerStyle.nav__menu__item}>
               Trending
             </a>
-            <a href="" className={headerStyle.nav__menu__item}>
+            <a href="#" className={headerStyle.nav__menu__item}>
               Categories
             </a>
           </nav>
