@@ -1,10 +1,21 @@
 .modal__wrap {
-  &:after {
-    content: "";
-    background: red;
-    width: 100%;
-    height: 100%;
-    position: absolute;
+  //background: #807f8a;
+  //width: 100%;
+  //height: 100%;
+  //position: absolute;
+  //top: 0;
+  //bottom: 0;
+
+  &:before {
+    //content: "";
+    ////background: #00001a;
+    //opacity: 0.5;
+    //background: red;
+    //width: 100%;
+    //height: 100%;
+    //position: absolute;
+    //top: 0;
+    //bottom: 0;
   }
 }
 
