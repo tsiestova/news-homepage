@@ -1,4 +1,5 @@
 import "./App.css";
+import headerStyle from "./components/header.module.scss";
 import Header from "./components/Header";
 import TopBox from "./components/TopBox";
 import NewsContainer from "./components/NewsContainer";
@@ -9,6 +10,9 @@ import ModalComponent from "./components/ModalComponent";
 export const ModalContext = createContext(null);
 
 function App() {
+  const appRef = useRef();
+  const headerRef = useRef(null);
+
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   useEffect(() => {
@@ -17,11 +21,26 @@ function App() {
       : (document.body.style.overflowY = "auto");
   }, [isOpenModal]);
 
+  useEffect(() => {
+    const scrollHandler = () => {
+      const scrollCondition =
+        document.documentElement.scrollTop > 10 || document.body.scrollTop > 10;
+
+      if (scrollCondition) {
+        headerRef.current.classList.add("header__active");
+      } else {
+        headerRef.current.classList.remove("header__active");
+      }
+    };
+
+    window.addEventListener("scroll", scrollHandler);
+    return () => window.removeEventListener("scroll", scrollHandler);
+  }, []);
+
   const dataContext = {
     isOpenModal,
     setIsOpenModal,
   };
-  const appRef = useRef();
 
   const handleMouseDown = (e) => {
     if (appRef.current.contains(e.target)) {
@@ -37,7 +56,7 @@ function App() {
           ref={appRef}
           onMouseDown={(e) => handleMouseDown(e)}
         >
-          <Header />
+          <Header forwardRef={headerRef} />
           <div className={mainStyles.section__wrap}>
             <TopBox />
             <NewsContainer />

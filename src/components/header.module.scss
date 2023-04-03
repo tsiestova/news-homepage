@@ -2,7 +2,9 @@
 
 .header {
   height: 86px;
-  position: relative;
+  position: sticky;
+  top: 0;
+  background: white;
 
   @include media.desktop {
     height: 186px;

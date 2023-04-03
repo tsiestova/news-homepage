@@ -6,8 +6,6 @@ import ReactDom from "react-dom";
 const ModalComponent = () => {
   const { isOpenModal, setIsOpenModal } = useContext(ModalContext);
 
-  const modalRef = useRef();
-
   if (!isOpenModal) return null;
 
   return ReactDom.createPortal(

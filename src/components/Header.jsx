@@ -5,11 +5,15 @@ import mainStyle from "./main.module.scss";
 import { ModalContext } from "../App";
 import logo from "../assets/logo.svg";
 
-const Header = () => {
+const Header = ({ forwardRef }) => {
   const { isOpenModal, setIsOpenModal } = useContext(ModalContext);
 
   return (
-    <header className={headerStyle.header}>
+    <header
+      className={headerStyle.header}
+      id={headerStyle.header}
+      ref={forwardRef}
+    >
       <div
         className={`${layoutStyle.layout} ${headerStyle.layout} ${mainStyle.layout}`}
       >

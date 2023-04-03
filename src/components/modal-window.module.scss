@@ -1,14 +1,13 @@
 .modal__wrap {
-  &:before {
-    content: "";
-    background: #00001a;
-    opacity: 0.5;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-  }
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+
+  transition: opacity 3s;
+  opacity: 1;
 }
 
 .btn__close {
@@ -16,6 +15,9 @@
   width: 30px;
   height: 30px;
   margin-bottom: 86px;
+  position: absolute;
+  right: 20px;
+  top: 27px;
 }
 
 .nav__menu {
@@ -41,14 +43,15 @@
 .modal__window {
   width: 83%;
   background: #fffdfa;
-  bottom: 0;
-  text-align: right;
-  padding: 24px 27px 20px 20px;
-  position: fixed;
   top: 0;
-  right: 0;
+  position: absolute;
+  bottom: 0;
   height: 100%;
   overflow: scroll;
+  padding: 144px 27px 20px 20px;
+  right: 0;
+  transition: transform 3s;
+  will-change: transform;
 
   .nav__menu {
     flex-direction: column;
