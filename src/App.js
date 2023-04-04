@@ -37,7 +37,7 @@ function App() {
     setIsOpenModal,
   };
 
-  const handleMouseDown = (e) => {
+  const handleClick = (e) => {
     if (appRef.current.contains(e.target)) {
       setIsOpenModal(false);
     }
@@ -48,19 +48,21 @@ function App() {
       ? (document.body.style.overflowY = "hidden")
       : (document.body.style.overflowY = "auto");
 
+    // if (isOpenModal) {
+    //   window.addEventListener("click", (e) => handleClick(e));
+    // }
+
     if (modalRef.current) {
-      modalRef.current.classList.add("show__modal");
+      setTimeout(() => {
+        modalRef.current.classList.add("show__modal");
+      }, 100);
     }
   }, [isOpenModal]);
 
   return (
     <div className="App">
       <ModalContext.Provider value={dataContext}>
-        <div
-          className={mainStyles.page__wrap}
-          ref={appRef}
-          onMouseDown={(e) => handleMouseDown(e)}
-        >
+        <div className={mainStyles.page__wrap} ref={appRef}>
           <Header forwardRef={headerRef} />
           <div className={mainStyles.section__wrap}>
             <TopBox />
