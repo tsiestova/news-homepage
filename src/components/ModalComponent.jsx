@@ -3,14 +3,14 @@ import modalStyle from "./modal-window.module.scss";
 import { ModalContext } from "../App";
 import ReactDom from "react-dom";
 
-const ModalComponent = () => {
+const ModalComponent = ({ forwardRef }) => {
   const { isOpenModal, setIsOpenModal } = useContext(ModalContext);
 
   if (!isOpenModal) return null;
 
   return ReactDom.createPortal(
     <div className={modalStyle.modal__wrap}>
-      <div className={modalStyle.modal__window}>
+      <div className={modalStyle.modal__window} ref={forwardRef}>
         <button
           type="button"
           className={modalStyle.btn__close}

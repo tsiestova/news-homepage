@@ -12,27 +12,22 @@ export const ModalContext = createContext(null);
 function App() {
   const appRef = useRef();
   const headerRef = useRef(null);
+  const modalRef = useRef(null);
 
   const [isOpenModal, setIsOpenModal] = useState(false);
 
-  useEffect(() => {
-    isOpenModal
-      ? (document.body.style.overflowY = "hidden")
-      : (document.body.style.overflowY = "auto");
-  }, [isOpenModal]);
+  const scrollHandler = () => {
+    const scrollCondition =
+      document.documentElement.scrollTop > 10 || document.body.scrollTop > 10;
+
+    if (scrollCondition) {
+      headerRef.current.classList.add("header__active");
+    } else {
+      headerRef.current.classList.remove("header__active");
+    }
+  };
 
   useEffect(() => {
-    const scrollHandler = () => {
-      const scrollCondition =
-        document.documentElement.scrollTop > 10 || document.body.scrollTop > 10;
-
-      if (scrollCondition) {
-        headerRef.current.classList.add("header__active");
-      } else {
-        headerRef.current.classList.remove("header__active");
-      }
-    };
-
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);
   }, []);
@@ -47,6 +42,16 @@ function App() {
       setIsOpenModal(false);
     }
   };
+
+  useEffect(() => {
+    isOpenModal
+      ? (document.body.style.overflowY = "hidden")
+      : (document.body.style.overflowY = "auto");
+
+    if (modalRef.current) {
+      modalRef.current.classList.add("show__modal");
+    }
+  }, [isOpenModal]);
 
   return (
     <div className="App">
@@ -63,7 +68,7 @@ function App() {
           </div>
           <ArticleContainer />
         </div>
-        <ModalComponent />
+        <ModalComponent forwardRef={modalRef} />
       </ModalContext.Provider>
     </div>
   );
