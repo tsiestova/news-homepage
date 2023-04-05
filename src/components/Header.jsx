@@ -1,18 +1,36 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useEffect } from "react";
 import headerStyle from "./header.module.scss";
 import layoutStyle from "./layout.module.scss";
 import mainStyle from "./main.module.scss";
 import { ModalContext } from "../App";
 import logo from "../assets/logo.svg";
 
-const Header = ({ forwardRef }) => {
+const Header = () => {
   const { isOpenModal, setIsOpenModal } = useContext(ModalContext);
+  const headerRef = useRef();
+
+  const scrollHandler = () => {
+    const scrollCondition =
+      document.documentElement.scrollTop > 10 || document.body.scrollTop > 10;
+
+    if (scrollCondition) {
+      headerRef.current.classList.add("header__active");
+    } else {
+      headerRef.current.classList.remove("header__active");
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", scrollHandler);
+
+    return () => window.removeEventListener("scroll", scrollHandler);
+  }, []);
 
   return (
     <header
       className={headerStyle.header}
       id={headerStyle.header}
-      ref={forwardRef}
+      ref={headerRef}
     >
       <div
         className={`${layoutStyle.layout} ${headerStyle.layout} ${mainStyle.layout}`}
@@ -23,7 +41,7 @@ const Header = ({ forwardRef }) => {
         <button
           type="button"
           className={headerStyle.menu__btn}
-          onClick={() => setIsOpenModal(true)}
+          onClick={() => setIsOpenModal("created")}
         ></button>
 
         <div className={headerStyle.nav__menu__wrap}>

@@ -1,5 +1,4 @@
 
-
 .header__active {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
@@ -10,15 +9,3 @@
        box-shadow: none;
     }
 }
-
-body .show__modal {
-    transform: translateX(0);
-}
-
-/*.show__modal {*/
-/*    opacity: 1;*/
-/*}*/
-
-/*.show__modal .modal__window {*/
-/*    transform: translateX(100%);*/
-/*}*/

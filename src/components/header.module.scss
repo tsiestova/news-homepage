@@ -6,10 +6,13 @@
   top: 0;
   background: white;
 
+  @include media.tablet {
+    position: relative;
+  }
+
   @include media.desktop {
     height: 186px;
     padding-top: 89px;
-    position: relative;
   }
 
   .layout {

@@ -1,36 +1,18 @@
 import "./App.css";
-import headerStyle from "./components/header.module.scss";
 import Header from "./components/Header";
 import TopBox from "./components/TopBox";
 import NewsContainer from "./components/NewsContainer";
 import ArticleContainer from "./components/ArticleContainer";
 import mainStyles from "./components/main.module.scss";
-import { useState, createContext, useReducer, useRef, useEffect } from "react";
+import { useState, createContext, useRef, useEffect } from "react";
 import ModalComponent from "./components/ModalComponent";
 export const ModalContext = createContext(null);
 
 function App() {
   const appRef = useRef();
-  const headerRef = useRef(null);
-  const modalRef = useRef(null);
+  const modalContentRef = useRef(null);
 
-  const [isOpenModal, setIsOpenModal] = useState(false);
-
-  const scrollHandler = () => {
-    const scrollCondition =
-      document.documentElement.scrollTop > 10 || document.body.scrollTop > 10;
-
-    if (scrollCondition) {
-      headerRef.current.classList.add("header__active");
-    } else {
-      headerRef.current.classList.remove("header__active");
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", scrollHandler);
-    return () => window.removeEventListener("scroll", scrollHandler);
-  }, []);
+  const [isOpenModal, setIsOpenModal] = useState("none");
 
   const dataContext = {
     isOpenModal,
@@ -38,39 +20,33 @@ function App() {
   };
 
   const handleClick = (e) => {
-    if (appRef.current.contains(e.target)) {
-      setIsOpenModal(false);
+    const closeCondition =
+      isOpenModal === "visible" &&
+      modalContentRef.current &&
+      !modalContentRef.current.contains(e.target) &&
+      e.target.type !== "button";
+
+    if (closeCondition) {
+      setIsOpenModal("invisible");
     }
   };
 
-  useEffect(() => {
-    isOpenModal
-      ? (document.body.style.overflowY = "hidden")
-      : (document.body.style.overflowY = "auto");
-
-    // if (isOpenModal) {
-    //   window.addEventListener("click", (e) => handleClick(e));
-    // }
-
-    if (modalRef.current) {
-      setTimeout(() => {
-        modalRef.current.classList.add("show__modal");
-      }, 100);
-    }
-  }, [isOpenModal]);
+  window.document.addEventListener("click", (e) => {
+    handleClick(e);
+  });
 
   return (
     <div className="App">
       <ModalContext.Provider value={dataContext}>
         <div className={mainStyles.page__wrap} ref={appRef}>
-          <Header forwardRef={headerRef} />
+          <Header />
           <div className={mainStyles.section__wrap}>
             <TopBox />
             <NewsContainer />
           </div>
           <ArticleContainer />
         </div>
-        <ModalComponent forwardRef={modalRef} />
+        <ModalComponent forwardRef={modalContentRef} />
       </ModalContext.Provider>
     </div>
   );

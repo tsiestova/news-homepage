@@ -20,8 +20,6 @@
 .page__wrap {
   position: relative;
   &.dark__mode {
-    /*background: #807f8a;*/
-    //opacity: 0.5;
     &:before {
       content: "";
       position: absolute;
